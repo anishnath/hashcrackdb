@@ -114,8 +114,8 @@ public class HashProducer implements Runnable {
 						sm3.put(line);
 //						gost3411.put(line);
 //						gost34112012256.put(line);
-//						sha3224.put(line);
-//						sha3256.put(line);
+						sha3224.put(line);
+						sha3256.put(line);
 						ntlm.put(line);
 					}
 

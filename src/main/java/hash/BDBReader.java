@@ -38,6 +38,9 @@ public class BDBReader {
 	
 	private static Database ntlm=null;
 	
+	private static Database sha2_512_224=null;
+	private static Database sha2_512_256=null;
+	
 
 	public static void main(String[] args) throws Exception {
 
@@ -82,6 +85,10 @@ public class BDBReader {
 		blake2b512 = exampleEnv.openDatabase(null, "blake2b512", dbConfig);
 		
 		ntlm = exampleEnv.openDatabase(null, "ntlm", dbConfig);
+		
+		sha2_512_224 = exampleEnv.openDatabase(null, "sha2_512_224", dbConfig);
+		sha2_512_256 = exampleEnv.openDatabase(null, "sha2_512_256", dbConfig);
+		
 
 
 		Cursor cursor = md5.openCursor(null, null);
@@ -122,7 +129,7 @@ public class BDBReader {
 		System.out.println("Lets Read Again --<<<>>> BDBReader");
 		long startTime = System.currentTimeMillis();
 
-		FileInputStream input = new FileInputStream(new File("/tmp/hash.txt"));
+		FileInputStream input = new FileInputStream(new File("/tmp/hashi1.txt"));
 		// CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
 		// decoder.onMalformedInput(CodingErrorAction.IGNORE);
 		// InputStreamReader reader = new InputStreamReader(input, decoder);
@@ -239,6 +246,16 @@ public class BDBReader {
 			if (ntlm.get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
 				byte[] retData = theData.getData();
 				return getFormattedData(retData,"NTLM");
+			}
+			
+			if (sha2_512_224.get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
+				byte[] retData = theData.getData();
+				return getFormattedData(retData,"sha2_512_224");
+			}
+			
+			if (sha2_512_256.get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
+				byte[] retData = theData.getData();
+				return getFormattedData(retData,"sha2_512_256");
 			}
 			
 		} catch (Exception ex) {

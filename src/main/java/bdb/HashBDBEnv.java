@@ -45,8 +45,8 @@ public class HashBDBEnv {
 	private Database sm3 = null;
 	private Database gost3411 = null;
 	private Database gost34112012256 = null;
-	private Database sha3224 = null;
-	private Database sha3256 = null;
+	private Database sha2_512_224 = null;
+	private Database sha2_512_256 = null;
 	private Database ntlm = null;
 
 	private EnvironmentConfig envConfig = new EnvironmentConfig();
@@ -129,12 +129,12 @@ public class HashBDBEnv {
 		return gost34112012256;
 	}
 
-	public Database getSha3224() {
-		return sha3224;
+	public Database getSha2_224() {
+		return sha2_512_224;
 	}
 
-	public Database getSha3256() {
-		return sha3256;
+	public Database getSha2_256() {
+		return sha2_512_256;
 	}
 
 	public Database getNtlm() {
@@ -176,8 +176,8 @@ public class HashBDBEnv {
 			sm3 = exampleEnv.openDatabase(txn, "sm3", dbConfig);
 			gost3411 = exampleEnv.openDatabase(txn, "gost3411", dbConfig);
 			gost34112012256 = exampleEnv.openDatabase(txn, "gost34112012256", dbConfig);
-			sha3224 = exampleEnv.openDatabase(txn, "sha3224", dbConfig);
-			sha3256 = exampleEnv.openDatabase(txn, "sha3256", dbConfig);
+			sha2_512_224 = exampleEnv.openDatabase(txn, "sha2_512_224", dbConfig);
+			sha2_512_256 = exampleEnv.openDatabase(txn, "sha2_512_256", dbConfig);
 			ntlm = exampleEnv.openDatabase(txn, "ntlm", dbConfig);
 			
 			Runtime.getRuntime().addShutdownHook(new Thread()
@@ -219,8 +219,8 @@ public class HashBDBEnv {
 			getSha1().close();
 			getSha224().close();
 			getSha256().close();
-			getSha3224().close();
-			getSha3256().close();
+			getSha2_224().close();
+			getSha2_256().close();
 			getSha384().close();
 			getSha512().close();
 			getSm3().close();
@@ -277,19 +277,14 @@ public class HashBDBEnv {
 				return getFormattedData(retData,"SHA-512");
 			}
 			
-			if (getSha3224().get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
+			if (getSha2_224().get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
 				byte[] retData = theData.getData();
-				return getFormattedData(retData,"SHA3-224");
+				return getFormattedData(retData,"SHA2-224");
 			}
 			
-			if (getSha3256().get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
+			if (getSha2_256().get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
 				byte[] retData = theData.getData();
-				return getFormattedData(retData,"SHA3-256");
-			}
-			
-			if (getSha3256().get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {
-				byte[] retData = theData.getData();
-				return getFormattedData(retData,"SHA3-256");
+				return getFormattedData(retData,"SHA2-256");
 			}
 			
 			if (getTiger().get(null, theKey, theData, LockMode.DEFAULT) == OperationStatus.SUCCESS) {

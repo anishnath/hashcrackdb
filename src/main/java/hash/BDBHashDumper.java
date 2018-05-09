@@ -100,6 +100,9 @@ public class BDBHashDumper {
 		
 		NTLMConsumer ntlmConsumer = new NTLMConsumer(ntlm, example.getNtlm());
 		
+		SHA2_512_224Consumer sha2_512_224Consumer = new SHA2_512_224Consumer(sha3224, example.getSha2_224());
+		SHA2_512_256Consumer sha2_512_256Consumer = new SHA2_512_256Consumer(sha3256, example.getSha2_256());
+		
 		new Thread(hashProducer).start();
 		new Thread(md5Consumer).start();
 		new Thread(md2Consumer).start();
@@ -126,6 +129,9 @@ public class BDBHashDumper {
 		new Thread(blake2b512Consumer).start();
 		
 		new Thread(ntlmConsumer).start();
+		
+		new Thread(sha2_512_224Consumer).start();
+		new Thread(sha2_512_256Consumer).start();
 		
 		
 		
