@@ -1,15 +1,3 @@
-/*-
- * Copyright (C) 2002, 2017, Oracle and/or its affiliates. All rights reserved.
- *
- * This file was distributed by Oracle as part of a version of Oracle Berkeley
- * DB Java Edition made available at:
- *
- * http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index.html
- *
- * Please see the LICENSE file included in the top-level directory of the
- * appropriate version of Oracle Berkeley DB Java Edition for a copy of the
- * license and additional information.
- */
 
 package bdb;
 
@@ -28,11 +16,8 @@ import com.sleepycat.je.LockMode;
 import com.sleepycat.je.OperationStatus;
 import com.sleepycat.je.Transaction;
 
-/**
- * SimpleExample creates a database environment, a database, and a database
- * cursor, inserts and retrieves data.
- */
-public class SimpleExample {
+
+public class HashBDBEnv {
 	private static final int EXIT_SUCCESS = 0;
 	private static final int EXIT_FAILURE = 1;
 
@@ -156,7 +141,7 @@ public class SimpleExample {
 		return ntlm;
 	}
 
-	public SimpleExample(File envDir) {
+	public HashBDBEnv(File envDir) {
 		try {
 			this.envDir = envDir;
 
@@ -394,7 +379,7 @@ public class SimpleExample {
 		return builder.toString();
 	}
 
-	public SimpleExample(int numRecords, boolean doInsert, File envDir, int offset) {
+	public HashBDBEnv(int numRecords, boolean doInsert, File envDir, int offset) {
 		this.numRecords = numRecords;
 		this.doInsert = doInsert;
 		this.envDir = envDir;
@@ -415,7 +400,7 @@ public class SimpleExample {
 	 */
 	public static void main(String argv[]) {
 		
-		SimpleExample example =  new SimpleExample(new File("/tmp"));
+		HashBDBEnv example =  new HashBDBEnv(new File("/tmp"));
 		
 	}
 

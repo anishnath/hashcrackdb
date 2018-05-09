@@ -9,7 +9,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import com.sleepycat.je.Database;
 
-import bdb.SimpleExample;
+import bdb.HashBDBEnv;
 
 public class BDBHashDumper {
 
@@ -24,7 +24,7 @@ public class BDBHashDumper {
 		}
 
 		File envHomeDirectory = new File(argv[0]);
-		SimpleExample example = new SimpleExample(envHomeDirectory);
+		HashBDBEnv example = new HashBDBEnv(envHomeDirectory);
 
 		BlockingQueue sha1 = new ArrayBlockingQueue(32768);
 		;
