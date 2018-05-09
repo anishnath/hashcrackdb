@@ -30,7 +30,7 @@ public class SHA2_512_256Consumer implements Runnable {
 				String hexValue = cracker.cracker.SHAConsumer.byteToHex(crypt.digest());
 				
 				
-				System.out.println("SHA Consumer sha-512/256 -- " + hexValue.toUpperCase());
+				//System.out.println("SHA Consumer sha-512/256 -- " + hexValue.toUpperCase());
 				DatabaseEntry theKey = new DatabaseEntry(hexValue.toUpperCase().getBytes("UTF-8"));
 				DatabaseEntry theData = new DatabaseEntry(s.getBytes("UTF-8"));
 				db.put(null, theKey, theData);

@@ -31,7 +31,7 @@ public class NTLMConsumer implements Runnable {
 				
 				String hexValue = cracker.cracker.SHAConsumer.byteToHex(hash);
 				
-				System.out.println("NTLM Consumer -- " + hexValue.toUpperCase());
+				//System.out.println("NTLM Consumer -- " + hexValue.toUpperCase());
 				DatabaseEntry theKey = new DatabaseEntry(hexValue.toUpperCase().getBytes("UTF-8"));
 				DatabaseEntry theData = new DatabaseEntry(s.getBytes("UTF-8"));
 				db.put(null, theKey, theData);

@@ -80,8 +80,12 @@ public class HashProducer implements Runnable {
 			for (int i = 0; i < listOfFiles.length; i++) {
 
 				if (listOfFiles[i].isFile()) {
+					
+					String fName = listOfFiles[i].getName();
+					
+					System.out.println("Processing file " + fName);
 
-					FileInputStream input = new FileInputStream(listOfFiles[i].getName());
+					FileInputStream input = new FileInputStream(this.fileName+"/"+fName);
 					// CharsetDecoder decoder =
 					// Charset.forName("UTF-8").newDecoder();
 					// decoder.onMalformedInput(CodingErrorAction.IGNORE);

@@ -66,7 +66,7 @@
 	<build>
 		<plugins>
 
-			<plugin>
+			 <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
@@ -80,11 +80,11 @@
 				<configuration>
 					<mainClass>hash.BDBHashDumper</mainClass>
 					<arguments>
-						<argument>foo</argument>
-						<argument>bar</argument>
+						<argument>/tmp</argument>
+						<argument>/tmp/t1/</argument>
 					</arguments>
 				</configuration>
-			</plugin>
+			</plugin> 
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
