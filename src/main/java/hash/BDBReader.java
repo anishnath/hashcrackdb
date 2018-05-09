@@ -129,7 +129,7 @@ public class BDBReader {
 		System.out.println("Lets Read Again --<<<>>> BDBReader");
 		long startTime = System.currentTimeMillis();
 
-		FileInputStream input = new FileInputStream(new File("/tmp/hashi1.txt"));
+		FileInputStream input = new FileInputStream(new File("/tmp/hash.txt"));
 		// CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
 		// decoder.onMalformedInput(CodingErrorAction.IGNORE);
 		// InputStreamReader reader = new InputStreamReader(input, decoder);
