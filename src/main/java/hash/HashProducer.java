@@ -113,14 +113,14 @@ public class HashProducer implements Runnable {
 								md5.put(line);
 								md2.put(line);
 
-								ripemd160.put(line);
-								ripemd256.put(line);
-								ripemd320.put(line);
-								blake2b160.put(line);
-								blake2b256.put(line);
-								blake2b384.put(line);
-								blake2b512.put(line);
-								sm3.put(line);
+//								ripemd160.put(line);
+//								ripemd256.put(line);
+//								ripemd320.put(line);
+//								blake2b160.put(line);
+//								blake2b256.put(line);
+//								blake2b384.put(line);
+//								blake2b512.put(line);
+//								sm3.put(line);
 								// gost3411.put(line);
 								// gost34112012256.put(line);
 								sha3224.put(line);
