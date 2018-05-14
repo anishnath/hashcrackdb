@@ -4,7 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.lang.management.ManagementFactory;
 import java.util.concurrent.BlockingQueue;
+
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
+
+import jmx.FileProcessor;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -74,6 +80,12 @@ public class HashProducer implements Runnable {
 
 			System.out.println("Lets Read Again --<<<>>> HashProducer");
 			long startTime = System.currentTimeMillis();
+			
+			MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+			ObjectName name = new ObjectName("hash.mbeans:type=FileProcessor");
+			FileProcessor fileProcessor = new  FileProcessor();
+			mbs.registerMBean(fileProcessor, name);
+
 
 			File folder = new File(this.fileName);
 			File[] listOfFiles = folder.listFiles();
@@ -103,6 +115,8 @@ public class HashProducer implements Runnable {
 							// System.out.println(line);
 							if (line != null) {
 								// System.out.println(line);
+								fileProcessor.setCacheSize(x);
+								fileProcessor.displayWord(line);
 								sha1.put(line);
 								sha224.put(line);
 								sha256.put(line);
