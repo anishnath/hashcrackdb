@@ -58,21 +58,25 @@ public class Consumer implements Runnable{
                 //System.out.println(Thread.currentThread().getName()+" processing line: "+line);
                 //Do something with the line here like see if it contains a string
             	
-            	fileProcessor.setCacheSize(x);
-				fileProcessor.displayWord(line);
+//            	fileProcessor.setCacheSize(x);
+//				fileProcessor.displayWord(line);
             	
             	try {
         			MessageDigest crypt = MessageDigest.getInstance(Thread.currentThread().getName());
-        			while (true) {
-        				String s = (String) queue.take();
+        			
+        				
         				crypt.reset();
-        				crypt.update(s.getBytes("UTF-8"));
+        				crypt.update(line.getBytes("UTF-8"));
         				String hexValue = SHAConsumer.byteToHex(crypt.digest());
-        				//System.out.println("MD5 Consumer -- " + hexValue);
+        				System.out.println("MD5 Consumer -- " + hexValue + " Lines. " + line);
         				DatabaseEntry theKey = new DatabaseEntry(hexValue.toUpperCase().getBytes("UTF-8"));
-        				DatabaseEntry theData = new DatabaseEntry(s.getBytes("UTF-8"));
-        				db.getMd5().put(null, theKey, theData);
-        			}
+        				DatabaseEntry theData = new DatabaseEntry(line.getBytes("UTF-8"));
+        				
+        				synchronized (db) {
+        					db.getMd5().put(null, theKey, theData);
+						}
+        				
+        			
         		} catch (Exception e) {
         			e.printStackTrace();
         		}

@@ -78,7 +78,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>hash.BDBHashDumper</mainClass>
+					<mainClass>fasthash.Controller</mainClass>
 					<arguments>
 						<argument>/tmp</argument>
 						<argument>/tmp/t1/</argument>

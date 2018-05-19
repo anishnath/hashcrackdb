@@ -49,13 +49,13 @@ public class BDBReader {
 		envConfig.setAllowCreate(false);
 		envConfig.setReadOnly(false);
 
-		Environment exampleEnv = new Environment(new File("/tmp/"), envConfig);
+		Environment exampleEnv = new Environment(new File("/tmp/jdb"), envConfig);
 
 		// Transaction txn = exampleEnv.beginTransaction(null, null);
 		DatabaseConfig dbConfig = new DatabaseConfig();
 		dbConfig.setTransactional(false);
 		dbConfig.setAllowCreate(false);
-		dbConfig.setSortedDuplicates(true);
+		dbConfig.setSortedDuplicates(false);
 
 		List ls = exampleEnv.getDatabaseNames();
 

@@ -20,7 +20,7 @@ import jmx.FileProcessor;
 
 public class Controller {
 
-    private static final int NUMBER_OF_CONSUMERS = 10;
+    private static final int NUMBER_OF_CONSUMERS = 30;
     private static final int NUMBER_OF_PRODUCERS = 1;
     private static final int QUEUE_SIZE = 32767;
     private static BlockingQueue<String> queue;
@@ -64,7 +64,7 @@ public class Controller {
 
     private static void createAndStartProducers(){
         for(int i = 1; i <= NUMBER_OF_PRODUCERS; i++){
-            Producer producer = new Producer(Paths.get("/tmp/f4.txt"), queue);
+            Producer producer = new Producer(Paths.get("/tmp/xab"), queue);
             Thread producerThread = new Thread(producer,"producer-"+i);
             producerThreadCollection.add(producerThread);
             producerThread.start();

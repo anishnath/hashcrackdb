@@ -155,7 +155,7 @@ public class HashBDBEnv {
 			DatabaseConfig dbConfig = new DatabaseConfig();
 			dbConfig.setTransactional(true);
 			dbConfig.setAllowCreate(true);
-			dbConfig.setSortedDuplicates(true);
+			dbConfig.setSortedDuplicates(false);
 
 			sha1 = exampleEnv.openDatabase(txn, "sha1", dbConfig);
 			sha224 = exampleEnv.openDatabase(txn, "sha224", dbConfig);
