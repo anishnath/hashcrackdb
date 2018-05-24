@@ -2,6 +2,7 @@ package fasthash;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.BlockingQueue;
@@ -19,7 +20,7 @@ public class Producer implements Runnable{
     @Override
     public void run() {
         try {
-            BufferedReader reader = Files.newBufferedReader(fileToRead);
+            BufferedReader reader = Files.newBufferedReader(fileToRead,StandardCharsets.ISO_8859_1);
             String line;
             while((line = reader.readLine()) != null){
                 try {
